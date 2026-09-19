@@ -1,0 +1,13 @@
+# GitHub language statistics should describe authored source, not saved reports.
+backend/fairshare-backend/target/** linguist-generated=true
+backend/fairshare-backend/build/** linguist-generated=true
+backend/fairshare-backend/.gradle/** linguist-generated=true
+backend/fairshare-backend/designite-report-graph/** linguist-generated=true
+frontend/fairshare-frontend/html/** linguist-generated=true
+frontend/fairshare-frontend/assets/** linguist-generated=true
+frontend/fairshare-frontend/vitest-report.html linguist-generated=true
+frontend/fairshare-frontend/html.meta.json.gz linguist-generated=true
+docs/** linguist-documentation=true
+
+# Keep genuine Java, JavaScript/JSX, CSS, and the Vite HTML entry point detectable.
+# No source language is overridden or hidden.

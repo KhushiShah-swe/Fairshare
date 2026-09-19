@@ -1,0 +1,42 @@
+name: User story
+description: Propose a feature with clear value and acceptance criteria.
+title: "[Story]: "
+labels: [story]
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: User story
+      placeholder: As a [user], I want [capability], so that [outcome].
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: Benefit and value
+      description: Explain the user benefit and the product value.
+    validations:
+      required: true
+  - type: dropdown
+    id: points
+    attributes:
+      label: Proposed story points
+      options: ["Needs estimation", "1", "2", "3", "5", "8", "13"]
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Proposed priority
+      options: ["Needs triage", "High", "Medium", "Low"]
+  - type: textarea
+    id: criteria
+    attributes:
+      label: Acceptance criteria
+      description: Write observable outcomes, including failure cases.
+      placeholder: "- [ ] Given ... when ... then ..."
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Test approach and dependencies
+      description: Relevant checks, related issues, and any prerequisite decisions.

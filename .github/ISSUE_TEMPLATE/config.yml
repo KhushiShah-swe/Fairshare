@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Setup and project documentation
+    url: https://github.com/KhushiShah-swe/fairshare-app/tree/main/docs
+    about: Read the setup, API, architecture, and testing guides.
+  - name: Security reporting
+    url: https://github.com/KhushiShah-swe/fairshare-app/blob/main/SECURITY.md
+    about: Report security concerns privately using the documented contact.

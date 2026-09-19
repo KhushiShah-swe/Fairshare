@@ -1,138 +1,175 @@
-# 💸 FairShare – Expense Splitting Application
+<div align="center">
 
-FairShare is a full-stack expense sharing application designed to simplify how groups manage shared expenses, track balances, and settle debts efficiently.
+<img src="frontend/fairshare-frontend/src/assets/logo.png" alt="FairShare logo" width="150" />
 
----
-## 🚀 Overview
+# FairShare
 
-Managing shared expenses in groups can be complex and error-prone. FairShare provides a structured and user-friendly platform to:
+### Transparent expenses. Hassle-free settlements.
 
-- Track expenses within groups  
-- Automatically calculate balances  
-- Support multiple expense split methods  
-- Generate optimized settlement plans  
-- Enable seamless payment workflows  
+A full-stack expense-sharing application for roommates, trips, and teams — built with **Java, Spring Boot, React, and MySQL**.
 
----
-## ✨ Key Features
+[![CI](https://github.com/KhushiShah-swe/fairshare-app/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/KhushiShah-swe/fairshare-app/actions/workflows/ci.yml)
+![Java 17](https://img.shields.io/badge/Java-17-ED8B00?logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.2.3-6DB33F?logo=springboot&logoColor=white)
+![React](https://img.shields.io/badge/React-18-149ECA?logo=react&logoColor=white)
+![MySQL](https://img.shields.io/badge/Database-MySQL-4479A1?logo=mysql&logoColor=white)
 
-### 🔐 User & Group Management
-- User authentication (signup & login)
-- Create and join groups
-- View group members and details
+[Watch the demo](https://youtu.be/GIe5kEu0w4Q) · [Run locally](docs/SETUP.md) · [Architecture](docs/ARCHITECTURE.md) · [API reference](docs/API.md) · [Roadmap](docs/ROADMAP.md)
 
----
+**Maintained by [Khushi Shah · @KhushiShah-swe](https://github.com/KhushiShah-swe)**
 
-### 💰 Expense Management
-- Add, edit, and delete expenses  
-- Include title, category, amount, notes, and participants  
-- Automatic balance calculation  
+</div>
 
----
+## Why FairShare?
 
-### ⚖️ Flexible Expense Splitting
-- Equal split  
-- Percentage-based split  
-- Split among selected members  
+A shared grocery run, a weekend trip, or a household bill creates the same questions: **Who paid? Who participated? Who owes whom?** FairShare brings expenses, split allocations, receipts, and balances into one place, so groups can review their spending without maintaining a separate spreadsheet.
 
----
+The project follows the complete software development cycle: release planning, user stories, three development sprints, a React interface, a layered Spring Boot API, relational data modeling, automated tests, and continuous integration.
 
-### 📊 Dashboard & Insights
-- Net balance overview  
-- Amount owed vs amount to receive  
-- Visual representation of balances  
-- Expense history and breakdown  
+**Project status:** educational portfolio application for local evaluation. Use synthetic data; production authentication, authorization, and settlement-history improvements are tracked in the [roadmap](docs/ROADMAP.md).
 
----
+## Explore the project in a few minutes
 
-### 🧾 Receipt Management
-- Upload receipt images  
-- View receipts for transparency  
+| Explore | What to look for |
+| --- | --- |
+| [Sprint 3 demo](https://youtu.be/GIe5kEu0w4Q) | A recorded walkthrough of the final sprint's settlement and payment-reference screens |
+| [Project case study](docs/CASE_STUDY.md) | The problem, product decisions, delivery process, and engineering lessons |
+| [Architecture and data model](docs/ARCHITECTURE.md) | How React, REST controllers, services, repositories, and MySQL fit together |
+| [Tests and CI](docs/TESTING.md) | Existing test scope, verification commands, and coverage configuration |
+| [Sprint documentation](docs/README.md) | Release planning, presentations, demos, and linked milestone history |
 
----
+## Features
 
-### 💳 Settlement & Payments
-- Optimized settlement plan generation  
-- “Settle Up” functionality  
-- Zelle payment integration:
-  - Email & phone input  
-  - QR code upload and view  
+| Capability | Current implementation |
+| --- | --- |
+| Accounts | Signup and login flows, with a dashboard for the selected user |
+| Groups | Create household/trip/team groups, join through a six-character invite code, view members, rename a group, and leave or delete a group |
+| Expenses | Add, edit, and delete expenses with a description, payer, amount, category, date, notes, and participants |
+| Flexible splits | Equal or percentage allocation across selected participants; percentage totals are validated |
+| Receipts | Attach, view, replace, or remove image/PDF receipts; upload requests are limited to 5 MB |
+| Dashboard | Per-group balances, amounts owed or receivable, recent activity, and Recharts visualizations |
+| Settlement instructions | Consolidate repeated participant-to-payer debts into readable payment instructions |
+| Balance export | Download a CSV containing expenses, net balances, and settlement instructions |
+| Zelle reference details | Save payment email/phone details and upload/view a QR image for payments completed outside FairShare |
 
----
+See [current boundaries](#current-boundaries) for the distinction between these features and planned enhancements.
 
-## 🛠 Tech Stack
+## Quick start
 
-**Frontend:**  
-React, Vite, CSS 
+Requirements: **JDK 17**, **Maven 3.9.x**, **Node.js 22.12+**, **npm**, and a local **MySQL 8.x** server. The existing GitHub workflow uses Node 20; the setup guide uses a compatible modern local runtime without changing the workflow.
 
-**Backend:**  
-Java, Spring Boot, REST APIs, JPA/Hibernate  
+```bash
+git clone https://github.com/KhushiShah-swe/fairshare-app.git
+cd fairshare-app
+```
 
-**Database:**  
-MySQL  
+Create a local database and user using the [MySQL setup instructions](docs/SETUP.md#1-prepare-mysql). Then start the backend in one terminal:
 
-**Testing:**  
-JUnit, Vitest, Mockito, GitHub Actions  
+```bash
+cd backend/fairshare-backend
+export SPRING_DATASOURCE_URL='jdbc:mysql://localhost:3306/fairshare?useSSL=false&serverTimezone=UTC'
+export SPRING_DATASOURCE_USERNAME='fairshare'
+read -rsp 'Local MySQL password: ' SPRING_DATASOURCE_PASSWORD; echo
+export SPRING_DATASOURCE_PASSWORD
+mvn spring-boot:run
+```
 
-**Tools & Practices:**  
-Git, GitHub, Agile, Scrum, CI/CD, System Design  
+In another terminal, from the repository root:
 
----
-## 📄 Documentation
+```bash
+cd frontend/fairshare-frontend
+npm ci
+npm run dev -- --host localhost --port 5173 --strictPort
+```
 
-Detailed sprint-wise documentation is available in the [`docs`](./docs) folder, including:
+Open **http://localhost:5173**, create a demo account, and create your first group. The API runs at **http://localhost:8080/api**. The application currently expects these local addresses.
 
-- Sprint features and breakdown  
-- Demo videos  
-- Sprint presentations (PDF)  
-- Release planning  
+For **Windows PowerShell**, environment setup, troubleshooting, and a complete demo scenario, follow [SETUP.md](docs/SETUP.md).
 
----
-## 🧠 Agile Development
+## Architecture
 
-This project was developed using Agile methodology:
+```mermaid
+flowchart TD
+    UI["React pages"] --> CLIENT["Axios API client"]
+    CLIENT --> AUTH["Account controller"]
+    CLIENT --> GROUP["Group controller"]
+    CLIENT --> EXPENSE["Expense controller"]
+    AUTH --> SERVICES["Domain services"]
+    GROUP --> SERVICES
+    EXPENSE --> SERVICES
+    SERVICES --> JPA["Spring Data repositories"]
+    JPA --> MYSQL["MySQL"]
+```
 
-- Sprint-based development (3 sprints)  
-- User stories and task breakdown  
-- Backlog prioritization and planning  
-- Sprint reviews and retrospectives  
-- Continuous feature enhancement  
+The backend separates HTTP handling, business logic, and persistence. Expenses store their participant allocations, and the app derives balances from the payer and split records. Receipt and QR files are stored as database blobs. Read [Architecture](docs/ARCHITECTURE.md) for the entity relationships and tradeoffs.
 
----
-## 🎯 Minimum Viable Product (MVP)
+### Technology choices
 
-The MVP focused on delivering the core functionality required for users to manage shared expenses within groups.
+| Area | Technology |
+| --- | --- |
+| Frontend | React 18, React Router 6, Vite 7, JavaScript/JSX, CSS |
+| UI integration | Axios, Recharts, React Toastify |
+| Backend | Java 17, Spring Boot 3.2.3, Spring Web, Spring Data JPA/Hibernate |
+| Persistence | MySQL, relational entities, blob storage for attachments |
+| Backend verification | JUnit 5, Mockito, Maven Surefire, JaCoCo |
+| Frontend verification | Vitest and jsdom |
+| Delivery process | GitHub Actions CI, user stories, sprint milestones, reviews and retrospectives |
 
-**MVP Features:**
-- User authentication (signup & login)
-- Group creation and management
-- Adding and tracking expenses
-- Basic expense splitting (equal split)
-- Dashboard showing balances (owed vs to receive)
+### Repository map
 
-The MVP ensured a functional system where users could track and manage group expenses efficiently before introducing advanced features.
+| Location | Purpose |
+| --- | --- |
+| [`backend/fairshare-backend/src/main`](backend/fairshare-backend/src/main) | Java controllers, services, models, repositories, and configuration |
+| [`backend/fairshare-backend/src/test`](backend/fairshare-backend/src/test) | Backend controller and service unit tests |
+| [`frontend/fairshare-frontend/src`](frontend/fairshare-frontend/src) | React pages, API client, components, styles, and frontend checks |
+| [`.github`](.github) | Existing CI workflow, issue forms, PR template, and maintainer ownership |
+| [`docs`](docs/README.md) | Developer guides, case study, sprint presentations, and demo links |
 
----
-## ✅ Definition of Done (DoD)
+The repository also retains historical generated reports. [`.gitattributes`](.gitattributes) marks those outputs as generated so GitHub's language statistics represent the authored source.
 
-A feature was considered complete only when it satisfied the following criteria:
+## Testing and continuous integration
 
-- ✔ Functionality implemented as per acceptance criteria  
-- ✔ Code compiles and runs without errors  
-- ✔ Frontend and backend integration completed  
-- ✔ Unit and/or functional testing performed  
-- ✔ No critical bugs or issues remaining  
-- ✔ Code is clean, readable, and maintainable  
-- ✔ Changes committed and pushed to repository  
-- ✔ Feature demonstrated in sprint review  
+The existing suite contains **98 backend unit tests** across four classes and **5 frontend logic checks**. Backend tests use mocked dependencies; the frontend checks exercise small logic examples. Their scope and remaining integration-test opportunities are explained in [TESTING.md](docs/TESTING.md).
 
----
+```bash
+# From backend/fairshare-backend
+mvn clean verify
 
-## 📫 Contact
+# From frontend/fairshare-frontend
+npm ci
+npm test
+npm run build
+```
 
-**Khushi Shah**  
-📧 khushishah.r.009@gmail.com  
+[FairShare CI Build](.github/workflows/ci.yml) runs on pushes and pull requests. It executes Maven verification, uploads JaCoCo and Surefire reports, and runs Vitest. The current JaCoCo minimum is **1% line coverage**; the configured gate and observed report coverage are different measures. Frontend production building is a local verification command, not an existing CI step.
 
----
+The current workflow provides **continuous integration**. It does not publish or deploy the application. The badge above links to live workflow results.
 
-✨ This project demonstrates full-stack development, Agile execution, and real-world problem solving through a scalable and user-focused application.
+## Three-sprint delivery
+
+| Sprint | Focus | Recorded issue estimates | Evidence |
+| --- | --- | --- | --- |
+| [Sprint 1](https://github.com/KhushiShah-swe/fairshare-app/milestone/2) | Accounts, groups, expenses, equal splits, balances | 37 points across 7 stories | [Demo](https://youtu.be/nV-iAE6gtnw) · [Presentation](docs/Sprint%201.pdf) |
+| [Sprint 2](https://github.com/KhushiShah-swe/fairshare-app/milestone/3) | Selected participants, percentage splits, receipts | 21 points across 3 stories | [Demo](https://youtu.be/c3UXRfElc08) · [Presentation](docs/Sprint%202%20.pdf) |
+| [Sprint 3](https://github.com/KhushiShah-swe/fairshare-app/milestone/4) | CSV export, settlement instructions, reset workflow, Zelle details | 26 points across 4 stories | [Demo](https://youtu.be/GIe5kEu0w4Q) · [Presentation](docs/SPRINT%203.pdf) |
+
+These are the estimates recorded on issues #1–#14, totaling **84 story points**. Story points measure relative planned effort. Historical issue closure does not establish that every acceptance criterion has automated coverage. The [documentation index](docs/README.md) links the original release plan and sprint evidence.
+
+## Current boundaries
+
+- **Local demonstration:** account protection and server-side permission enforcement need further work before use with real financial or personal data.
+- **Settlement behavior:** the current plan groups direct debts. Global debt minimization and a durable, auditable payment ledger are future work. The dashboard's individual settlement action still needs its matching API implementation.
+- **Clear All Debts:** the current operation deletes the group's expenses and split records. Use it only with disposable demo data; preserving history is a roadmap item.
+- **Payment references:** Zelle payments occur through the user's bank. FairShare does not initiate transfers or verify payment completion.
+- **Future scope:** exact-amount splits, PDF balance exports, stronger monetary precision, full browser/API integration coverage, and hosted deployment remain planned work.
+
+See the [prioritized roadmap](docs/ROADMAP.md) for concrete next steps.
+
+## Maintainer and project resources
+
+**Khushi Shah · [@KhushiShah-swe](https://github.com/KhushiShah-swe)**
+[Project documentation](docs/README.md) · [Issues](https://github.com/KhushiShah-swe/fairshare-app/issues) · [Contributing](CONTRIBUTING.md) · [Security policy](SECURITY.md)
+
+For project inquiries: **khushishah.r.009@gmail.com**.
+
+**License:** no LICENSE file is currently included. Contact the maintainer about reuse.

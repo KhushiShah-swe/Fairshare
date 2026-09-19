@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a reproducible problem with FairShare.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "For security concerns, use the private contact in SECURITY.md. Use synthetic data in this report."
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and impact
+      description: What failed, and how does it affect the user?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Sign in with a demo account..."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Commit SHA, OS, browser, Java, Node, and database version as relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Redacted logs, screenshots, or failing test results. Do not include secrets or personal data.
