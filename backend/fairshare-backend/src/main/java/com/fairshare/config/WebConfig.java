@@ -9,17 +9,14 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        // Apply CORS settings to all endpoints in the application
         registry.addMapping("/**")
-                // Allow the specific origin of your React app
-                .allowedOrigins("http://localhost:5173") 
-                // Explicitly allow common HTTP methods
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                // Allow all headers to prevent "Pre-flight" request failures
+                .allowedOrigins(
+                        "http://localhost:5173",
+                        "https://fairshare-frontend-production-c31e.up.railway.app"
+                )
+                .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
-                // CRITICAL: Must be true to send/receive HttpSession cookies
                 .allowCredentials(true)
-                // How long the browser should cache this CORS configuration (1 hour)
                 .maxAge(3600);
     }
 }
