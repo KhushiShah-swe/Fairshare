@@ -31,4 +31,9 @@ reporters: ['default', 'html'],
     }
     }
   }
+  preview: {
+  allowedHosts: [
+    'fairshare-frontend-production-c31e.up.railway.app'
+  ]
+},
 })
