@@ -14,7 +14,7 @@ A full-stack expense-sharing application for roommates, trips, and teams — bui
 ![React](https://img.shields.io/badge/React-18-149ECA?logo=react&logoColor=white)
 ![MySQL](https://img.shields.io/badge/Database-MySQL-4479A1?logo=mysql&logoColor=white)
 
-[Watch the demo](https://youtu.be/GIe5kEu0w4Q) · [Run locally](docs/SETUP.md) · [Architecture](docs/ARCHITECTURE.md) · [API reference](docs/API.md) · [Roadmap](docs/ROADMAP.md)
+🚀 **[Live Demo](https://fairshare-frontend-production-c31e.up.railway.app)** · [Watch the demo](https://youtu.be/GIe5kEu0w4Q) · [Run locally](docs/SETUP.md) · [Architecture](docs/ARCHITECTURE.md) · [API reference](docs/API.md) · [Roadmap](docs/ROADMAP.md)
 
 **Maintained by [Khushi Shah · @KhushiShah-swe](https://github.com/KhushiShah-swe)**
 
@@ -26,12 +26,13 @@ A shared grocery run, a weekend trip, or a household bill creates the same quest
 
 The project follows the complete software development cycle: release planning, user stories, three development sprints, a React interface, a layered Spring Boot API, relational data modeling, automated tests, and continuous integration.
 
-**Project status:** educational portfolio application for local evaluation. Use synthetic data; production authentication, authorization, and settlement-history improvements are tracked in the [roadmap](docs/ROADMAP.md).
+**Project status:** deployed full-stack application on Railway. Try the live application at **[fairshare-frontend-production-c31e.up.railway.app](https://fairshare-frontend-production-c31e.up.railway.app)**. Authentication, authorization, and settlement-history improvements are tracked in the [roadmap](docs/ROADMAP.md).
 
 ## Explore the project in a few minutes
 
 | Explore | What to look for |
 | --- | --- |
+| [Live application](https://fairshare-frontend-production-c31e.up.railway.app) | Try the deployed FairShare application running on Railway |
 | [Sprint 3 demo](https://youtu.be/GIe5kEu0w4Q) | A recorded walkthrough of the final sprint's settlement and payment-reference screens |
 | [Project case study](docs/CASE_STUDY.md) | The problem, product decisions, delivery process, and engineering lessons |
 | [Architecture and data model](docs/ARCHITECTURE.md) | How React, REST controllers, services, repositories, and MySQL fit together |
@@ -161,7 +162,8 @@ These are the estimates recorded on issues #1–#14, totaling **84 story points*
 - **Settlement behavior:** the current plan groups direct debts. Global debt minimization and a durable, auditable payment ledger are future work. The dashboard's individual settlement action still needs its matching API implementation.
 - **Clear All Debts:** the current operation deletes the group's expenses and split records. Use it only with disposable demo data; preserving history is a roadmap item.
 - **Payment references:** Zelle payments occur through the user's bank. FairShare does not initiate transfers or verify payment completion.
-- **Future scope:** exact-amount splits, PDF balance exports, stronger monetary precision, full browser/API integration coverage, and hosted deployment remain planned work.
+- **Deployment:** the React frontend, Spring Boot backend, and MySQL database are deployed on Railway. The production frontend uses a configurable API URL while local development falls back to localhost.
+- **Future scope:** exact-amount splits, PDF balance exports, stronger monetary precision, and full browser/API integration coverage remain planned work.
 
 See the [prioritized roadmap](docs/ROADMAP.md) for concrete next steps.
 
